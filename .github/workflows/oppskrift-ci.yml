@@ -1,0 +1,67 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+env:
+  cache-name: cache-node-modules
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:  
+      - uses: actions/checkout@v2
+      
+      - name: Use NodeJS 14 LTS
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          
+      - run: yarn install --frozen-lockfile
+      
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
+
+  test:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
+          
+      - run: yarn lint
+    
+    
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
+      
+      - run: yarn build
+      
+      - name: Cache build
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: dist
+          
+# @todo add deployment
