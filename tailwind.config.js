@@ -15,7 +15,7 @@ module.exports = {
         },
         boxShadow: {
             oDefault: '0 3px 6px #5D5D5D29',
-        }
+        },
     },
     variants: {
         extend: {},

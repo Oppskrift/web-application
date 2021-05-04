@@ -1,10 +1,9 @@
-name: Node.js CI
+name: Oppskrift pull request validations
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
     
 env:
   cache-name: cache-node-modules
@@ -28,7 +27,7 @@ jobs:
           path: node_modules
           key: ${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
 
-  test:
+  check_lint:
     needs: install
     runs-on: ubuntu-latest
     steps:
@@ -41,10 +40,23 @@ jobs:
           key: ${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
           
       - run: yarn lint
-    
-    
-  build:
-    needs: test
+  
+  check_tests:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
+          
+      - run: yarn test
+  
+  check_build:
+    needs: install
     runs-on: ubuntu-latest
 
     steps:
@@ -57,11 +69,3 @@ jobs:
           key: ${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
       
       - run: yarn build
-      
-      - name: Cache build
-        uses: actions/upload-artifact@v2
-        with:
-          name: build
-          path: dist
-          
-# @todo add deployment

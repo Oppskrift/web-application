@@ -1,5 +1,5 @@
 <template>
-    <main><Button /></main>
+    <main><Button label="Home page button" /></main>
 </template>
 
 <script lang="ts">
