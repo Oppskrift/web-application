@@ -9,12 +9,12 @@ module.exports = {
         },
         colors: {
             ...defaultColors,
-            oBlack: '#212121',
-            oLightGrey: '#5D5D5D29',
-            oGrey: '#BFCAC5',
+            dark: '#212121',
+            light: '#5D5D5D29',
+            primary: '#BFCAC5',
         },
         boxShadow: {
-            oDefault: '0 3px 6px #5D5D5D29',
+            default: '0 3px 6px #5D5D5D29',
         },
     },
     variants: {
