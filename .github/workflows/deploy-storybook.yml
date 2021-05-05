@@ -1,0 +1,32 @@
+name: Oppskrift storybook deployment
+
+on:
+  push:
+    branches:
+      - main
+    
+env:
+  cache-name: cache-node-modules
+
+jobs:
+  github-pages-deployment:
+    runs-on: ubuntu-latest
+    steps:  
+      - uses: actions/checkout@v2
+      
+      - name: Use NodeJS 14 LTS
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          
+      - name: Install
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        run: yarn build-storybook
+      
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: deployed-storybook
+          folder: storybook-static
