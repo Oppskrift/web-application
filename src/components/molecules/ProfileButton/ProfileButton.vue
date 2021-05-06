@@ -51,7 +51,7 @@ export default defineComponent({
             return `${prefix} ${suffix}`;
         });
 
-        const avatarStyle = computed(() => ({
+        const avatarStyle = computed<any>(() => ({
             'background-image': `url("${props.avatar}")`,
             'background-position': 'center',
             'background-repeat': 'no-repeat',
