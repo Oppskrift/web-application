@@ -4,8 +4,9 @@
             class="mr-4 rounded-full p-4 w-14 h-14 flex justify-center items-center"
             :class="avatarDynamicClasses"
             :style="avatarStyle"
-            >{{ avatarText }}</i
         >
+            {{ avatarText }}
+        </i>
 
         <div>
             <p class="font-bold">{{ fullName }}</p>
@@ -37,16 +38,11 @@ export default defineComponent({
     },
     setup(props) {
         const recipesNumberText = computed(() => {
-            let prefix = props.recipesNumber;
-            let suffix = 'recette publiée';
-
-            if (props.recipesNumber > 1) {
-                suffix = 'recettes publiées';
-            }
-
-            if (props.recipesNumber < 0) {
-                prefix = 0;
-            }
+            const prefix = props.recipesNumber >= 0 ? props.recipesNumber : 0;
+            const suffix =
+                props.recipesNumber > 1
+                    ? 'recettes publiées'
+                    : 'recette publiée';
 
             return `${prefix} ${suffix}`;
         });
