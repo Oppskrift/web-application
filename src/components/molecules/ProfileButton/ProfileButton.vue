@@ -1,0 +1,72 @@
+<template>
+    <base-button class="py-4 px-6 flex items-center text-left">
+        <i
+            class="mr-4 rounded-full p-4 w-14 h-14 flex justify-center items-center"
+            :class="avatarDynamicClasses"
+            :style="avatarStyle"
+        >
+            {{ avatarText }}
+        </i>
+
+        <div>
+            <p class="font-bold">{{ fullName }}</p>
+            <p class="text-xs text-medium">{{ recipesNumberText }}</p>
+        </div>
+    </base-button>
+</template>
+
+<script lang="ts">
+import { computed, defineComponent } from 'vue';
+
+import BaseButton from '../../atoms/Button';
+
+export default defineComponent({
+    name: 'ProfileButton',
+    components: { BaseButton },
+    props: {
+        avatar: {
+            type: String,
+        },
+        fullName: {
+            type: String,
+            required: true,
+        },
+        recipesNumber: {
+            type: Number,
+            default: 0,
+        },
+    },
+    setup(props) {
+        const recipesNumberText = computed(() => {
+            const prefix = props.recipesNumber >= 0 ? props.recipesNumber : 0;
+            const suffix =
+                props.recipesNumber > 1
+                    ? 'recettes publiées'
+                    : 'recette publiée';
+
+            return `${prefix} ${suffix}`;
+        });
+
+        const avatarStyle = computed<any>(() => ({
+            'background-image': `url("${props.avatar}")`,
+            'background-position': 'center',
+            'background-repeat': 'no-repeat',
+            'background-size': 'cover',
+        }));
+
+        const avatarDynamicClasses = computed(() => ({
+            'bg-primary': !props.avatar,
+            'material-icons': !props.avatar,
+        }));
+
+        const avatarText = computed(() => (!props.avatar ? 'person' : ''));
+
+        return {
+            recipesNumberText,
+            avatarStyle,
+            avatarDynamicClasses,
+            avatarText,
+        };
+    },
+});
+</script>

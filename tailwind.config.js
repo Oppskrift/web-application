@@ -9,9 +9,10 @@ module.exports = {
         },
         colors: {
             ...defaultColors,
-            oBlack: '#212121',
-            oLightGrey: '#5D5D5D29',
-            oGrey: '#BFCAC5',
+            dark: '#212121',
+            light: '#5D5D5D29',
+            primary: '#BFCAC5',
+            medium: '#6A6A6A',
             brown: '#C6A48F',
             purple: '#9D9FD5',
             'light-green': '#78B194',
@@ -19,7 +20,7 @@ module.exports = {
             red: '#E32A6A',
         },
         boxShadow: {
-            oDefault: '0 3px 6px #5D5D5D29',
+            default: '0 3px 6px #5D5D5D29',
         },
     },
     variants: {
