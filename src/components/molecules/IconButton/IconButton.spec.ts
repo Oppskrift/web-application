@@ -7,7 +7,7 @@ describe('Icon Button', () => {
         const name = 'menu';
 
         const wrapper = mount(IconButton as any, {
-            propsData: { name },
+            props: { name },
         });
 
         const button = wrapper.find('button');

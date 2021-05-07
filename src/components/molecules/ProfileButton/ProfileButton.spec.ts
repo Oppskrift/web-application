@@ -6,7 +6,7 @@ describe('Icon Button', () => {
     test('It should display a p element according to the name props', async () => {
         const fullName = 'Scttpr';
         const wrapper = mount(ProfileButton as any, {
-            propsData: { fullName },
+            props: { fullName },
         });
 
         const pElement = wrapper.find('p');
@@ -17,7 +17,7 @@ describe('Icon Button', () => {
     test('It should display default recipe number text', () => {
         const fullName = 'Scttpr';
         const wrapper = mount(ProfileButton as any, {
-            propsData: { fullName },
+            props: { fullName },
         });
 
         const pElement = wrapper.find('p.text-xs');
@@ -30,7 +30,7 @@ describe('Icon Button', () => {
     test('It should display default text if recipes number is negative', () => {
         const fullName = 'Scttpr';
         const wrapper = mount(ProfileButton as any, {
-            propsData: { fullName, recipesNumber: -10 },
+            props: { fullName, recipesNumber: -10 },
         });
 
         const pElement = wrapper.find('p.text-xs');
@@ -43,7 +43,7 @@ describe('Icon Button', () => {
     test('It should display singular if recipes number is equal to one', () => {
         const fullName = 'Scttpr';
         const wrapper = mount(ProfileButton as any, {
-            propsData: { fullName, recipesNumber: 1 },
+            props: { fullName, recipesNumber: 1 },
         });
 
         const pElement = wrapper.find('p.text-xs');
@@ -56,7 +56,7 @@ describe('Icon Button', () => {
     test('It should display plural if recipes number is greater than one', async () => {
         const fullName = 'Scttpr';
         const wrapper = mount(ProfileButton as any, {
-            propsData: { fullName, recipesNumber: 2 },
+            props: { fullName, recipesNumber: 2 },
         });
 
         const pElement = wrapper.find('p.text-xs');
@@ -73,7 +73,7 @@ describe('Icon Button', () => {
     test('It should display a person icon if avatar prop is not provided', () => {
         const fullName = 'Scttpr';
         const wrapper = mount(ProfileButton as any, {
-            propsData: { fullName },
+            props: { fullName },
         });
 
         const iElement = wrapper.find('i');
