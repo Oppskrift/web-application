@@ -19,7 +19,7 @@ export const Default: Story<typeof PButton> = (args) => ({
 });
 
 Default.args = {
-    fullName: 'Scttpr',
+    user: 'Scttpr',
 };
 
 loadBackgroundControl(Default);
@@ -33,7 +33,7 @@ export const WithPicture: Story<typeof PButton> = (args) => ({
 });
 
 WithPicture.args = {
-    fullName: 'Scttpr',
+    user: 'Scttpr',
     avatar,
 };
 
