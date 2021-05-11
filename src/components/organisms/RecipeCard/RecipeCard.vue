@@ -1,28 +1,53 @@
 <template>
     <article class="rounded-lg shadow-default relative">
-        <i v-if="!isAuthor" class="material-icons absolute top-4 right-4" :class="likeIconColor">{{ likeIconName }}</i>
+        <i
+            v-if="!isAuthor"
+            class="material-icons absolute top-4 right-4"
+            :class="likeIconColor"
+            >{{ likeIconName }}</i
+        >
 
-        <img class="w-full h-56 object-cover rounded-t-lg" v-if="card.cover" :src="card.cover" alt="recipe-cover" />
-        <i v-else class="material-icons bg-primary rounded-t-lg w-full h-56 flex justify-center items-center text-white text-8xl">image</i>
+        <img
+            class="w-full h-56 object-cover rounded-t-lg"
+            v-if="card.cover"
+            :src="card.cover"
+            alt="recipe-cover"
+        />
+        <i
+            v-else
+            class="
+                material-icons
+                bg-primary
+                rounded-t-lg
+                w-full
+                h-56
+                flex
+                justify-center
+                items-center
+                text-white text-8xl
+            "
+        >
+            image
+        </i>
 
         <div class="p-4">
             <tag
                 :key="`recipe-tag${index}`"
-                v-for="({ label, color }, index) in card.tags"
+                v-for="({ label, color, path }, index) in card.tags"
                 :label="label"
                 :color="color"
+                :path="path"
                 class="mr-2"
             />
             <p class="font-bold my-2">{{ card.name }}</p>
 
-        <div class="flex items-center">
-            <avatar class="h-8 w-8 mr-2" :image="card.author.avatar" />
-            <span class="text-sm text-medium-grey">{{ card.author.name }}</span> 
+            <div class="flex items-center">
+                <avatar class="h-8 w-8 mr-2" :image="card.author.avatar" />
+                <span class="text-sm text-medium-grey">{{
+                    card.author.name
+                }}</span>
+            </div>
         </div>
-
-        </div>
-
-
     </article>
 </template>
 
@@ -32,17 +57,10 @@ import { computed, defineComponent, PropType } from 'vue';
 import Tag from '../../atoms/Tag';
 import Avatar from '../../atoms/Avatar';
 
-enum TagColor {
-    purple = 'purple',
-    'light-green' = 'lightGreen',
-    'dark-green' = 'darkGreen',
-    red = 'red',
-    default = 'default'
-};
-
-interface Tag {
+interface ITag {
     label: string;
-    color?: TagColor;
+    color?: string;
+    path: string;
 }
 
 interface Author {
@@ -52,7 +70,7 @@ interface Author {
 
 interface RecipeCard {
     name: string;
-    tags: Tag[];
+    tags: ITag[];
     author: Author;
     liked: boolean;
     cover?: string;
@@ -85,6 +103,6 @@ export default defineComponent({
         });
 
         return { isAuthor, likeIconName, likeIconColor };
-    }
+    },
 });
 </script>
