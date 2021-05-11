@@ -1,6 +1,6 @@
 <template>
     <i
-        class="mr-4 rounded-full p-4 flex justify-center items-center"
+        class="rounded-full p-4 flex justify-center items-center"
         :class="avatarDynamicClasses"
         :style="avatarStyle"
     >

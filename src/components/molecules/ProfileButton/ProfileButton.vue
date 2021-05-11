@@ -1,6 +1,6 @@
 <template>
     <base-button class="py-4 px-6 flex items-center text-left">
-        <avatar class="w-14 h-14" :image="avatar" />
+        <avatar class="w-14 h-14 mr-4" :image="avatar" />
 
         <div>
             <p class="font-bold">{{ user }}</p>
