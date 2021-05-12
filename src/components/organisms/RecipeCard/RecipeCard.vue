@@ -57,24 +57,7 @@ import { computed, defineComponent, PropType } from 'vue';
 import Tag from '../../atoms/Tag';
 import Avatar from '../../atoms/Avatar';
 
-interface ITag {
-    label: string;
-    color?: string;
-    path: string;
-}
-
-interface Author {
-    name: string;
-    avatar?: string;
-}
-
-interface RecipeCard {
-    name: string;
-    tags: ITag[];
-    author: Author;
-    liked: boolean;
-    cover?: string;
-}
+import { RecipeCard } from '../../../types';
 
 export default defineComponent({
     name: 'RecipeCard',

@@ -18,15 +18,7 @@
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
 
-interface Image {
-    path: string;
-    alternativeText: string;
-}
-
-interface Quantity {
-    value: number;
-    unit: string;
-}
+import { Quantity, Image } from '../../../types';
 
 export default defineComponent({
     name: 'Ingredient',
