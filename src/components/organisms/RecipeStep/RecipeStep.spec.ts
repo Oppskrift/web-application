@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 
 import RecipeStep from './RecipeStep.vue';
 
-describe('Icon Button', () => {
+describe('Recipe step', () => {
     test('It should have a different style depending on the done prop', async () => {
         const wrapper = shallowMount(RecipeStep as any, {
             props: {

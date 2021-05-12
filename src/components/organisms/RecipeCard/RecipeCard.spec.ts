@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils';
 
 import RecipeCard from './RecipeCard.vue';
 
-describe('Icon Button', () => {
+describe('Recipe card', () => {
     const dummyCard = {
         name: 'Vegetables soup with shrimps',
         tags: [

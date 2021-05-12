@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 
 import Avatar from './Avatar.vue';
 
-describe('Icon Button', () => {
+describe('Avatar', () => {
     test('It should display default icon if no image is provided', async () => {
         const wrapper = mount(Avatar);
 

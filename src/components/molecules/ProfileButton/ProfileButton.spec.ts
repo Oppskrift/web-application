@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 
 import ProfileButton from './ProfileButton.vue';
 
-describe('Icon Button', () => {
+describe('Profile Button', () => {
     test('It should display a p element according to the name props', async () => {
         const user = 'Scttpr';
         const wrapper = mount(ProfileButton as any, {
