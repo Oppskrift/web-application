@@ -21,7 +21,7 @@ export default defineComponent({
     },
     setup(props) {
         const classNames = computed(() => {
-            let list = 'font-body';
+            let list = '';
 
             if (props.circular) {
                 list += ' rounded-full';
