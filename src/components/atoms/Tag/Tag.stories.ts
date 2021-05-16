@@ -6,7 +6,7 @@ import { loadTagColors } from '../../../../.storybook/tools/generic-controls';
 
 export default {
     component: TagComponent,
-    title: 'Components/Tag',
+    title: 'Design System/Atoms/Tag',
 };
 
 export const Tag: Story<typeof TagComponent> = (args) => ({

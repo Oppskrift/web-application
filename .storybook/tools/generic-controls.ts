@@ -2,7 +2,7 @@ import { Story } from "@storybook/vue3";
 
 const BACKGROUNDS = {
     primary: 'bg-primary',
-    light: 'bg-light',
+    lightGrey: 'bg-light-grey',
     white: 'bg-white',
     transparent: 'bg-transparent'
 };
@@ -15,7 +15,7 @@ export const loadBackgroundControl = <T>(story: Story<T>) => {
                 type: 'radio',
                 labels: {
                     [BACKGROUNDS.primary]: 'Primary',
-                    [BACKGROUNDS.light]: 'Light',
+                    [BACKGROUNDS.lightGrey]: 'Light',
                     [BACKGROUNDS.white]: 'White',
                     [BACKGROUNDS.transparent]: 'Transparent',
                 
